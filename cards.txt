@@ -1,0 +1,7 @@
+Deadly Imp,1,2,1,0,0,0,0,0,0,0,0
+Icefist Raptor,2,2,3,0,0,0,0,0,0,0,0
+Heavenly Gorgon,3,3,4,2,0,0,0,0,0,0,2
+Diseased Imp,2,3,2,0,0,0,0,0,0,0,0
+Helpless General,2,2,2,0,0,0,0,0,0,0,0
+Diseased Villager,2,1,1,0,0,0,0,0,0,0,0
+War Chariot,2,2,3,0,0,0,0,0,0,0,0

@@ -1,0 +1,7 @@
+Deadly_Imp,1,2,1,0,0,0,0,0,0,0,0
+Icefist_Raptor,2,2,3,0,0,0,0,0,0,0,0
+Heavenly_Gorgon,3,3,4,2,0,0,0,0,0,0,2
+Diseased_Imp,2,3,2,0,0,0,0,0,0,0,0
+Helpless_General,2,2,2,0,0,0,0,0,0,0,0
+Diseased_Villager,2,1,1,0,0,0,0,0,0,0,0
+War_Chariot,2,2,3,0,0,0,0,0,0,0,0
