@@ -1,6 +1,7 @@
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.io.FileReader;
 //import sparseMatrix.Commander;
 //import sparseMatrix.Card;
@@ -23,16 +24,13 @@ public class WTG
    public static int turnNum0 = 1;
    public static int turnNum1 = 1;
    public static int manaCrystal0 = 1;
-   public static int manaCrystal1 = 0;
-
-
+   public static int manaCrystal1 = 1;
 
    public static void main(String[] vidyagame) throws IOException {
    
    	// drawCardFromDiscard(byte playerNum, ArrayList<Card> discard)
    	// discard((byte) 0, hand0, discard0);
    	// drawCardFromDiscard((byte) 0, discard0);
-   	
    
       sm.add(2, 1, new Commander((byte) 0));
       sm.add(2, 9, new Commander((byte) 1));
@@ -58,12 +56,12 @@ public class WTG
    
       drawCard((byte) 0);
       drawCard((byte) 0);
-      drawCard((byte) 0);
+      
    
       drawCard((byte) 1);
       drawCard((byte) 1);
       drawCard((byte) 1);
-      drawCard((byte) 1);
+      
    
       Card c0 = findCommander((byte) 0);
       Card c1 = findCommander((byte) 1);
@@ -72,15 +70,12 @@ public class WTG
       
          standbyPhase();
          mainPhase((byte) 0);
-         
-         standbyPhase();
-         mainPhase((byte) 1);         
+         if (c0.getHealth() > 0 && c1.getHealth() > 0) {
+            standbyPhase();
+            mainPhase((byte) 1);
+         }
       	
       
-         System.out.println(deck0);
-         System.out.println(deck1);
-      
-               
       }
       if (c1.getHealth() == 0) {
          System.out.println("player 1 has won");
@@ -122,163 +117,198 @@ public class WTG
    public static void mainPhase(byte playerNum)
    
    {
-      
-           
+    
+      showToScreen();
+    
+      System.out.println("player's turn " + playerNum);
       if (playerNum == 0) {
+         System.out.println("turn number " + turnNum0);
+         System.out.println("mana crystals " + manaCrystal0);
+         
+         drawCard((byte)0);
       
-         byte count = 0;
+         
+         
+         
+      } 
+      else {
+         System.out.println("turn number " + turnNum1);
+         System.out.println("mana crystals " + manaCrystal1);
+         
+         drawCard((byte)1);
       
-         System.out.println("player's turn " + playerNum);
-         System.out.println("turn number " +  turnNum0);
-         System.out.println("mana crystals " +  manaCrystal0);
-      
-         System.out.println("choose an option from the menu");
-         System.out.println("1: play a card");
-         System.out.println("2: show target stats");
-         System.out.println("3: goto battle phase");
-         System.out.println("8: end turn");
-         playerNum = 1;
          
-         byte input2 = (byte) (input.nextInt());
-      
-         while (input2 < 7 && input2 > 0) {
-            if (input2 == 1) {
-               playCard((byte) 0, hand0);
-            }
-            if (input2 == 2) {
-            
-               showTargetStats((byte) 0, hand0);
-            
-            }
-            if (input2 == 3) {
-            
-               battlePhase();
-            
-            }
-            if (input2 == 4) {
-            
-            
-            
-            }
-         
-            for(int i = 0; i <= count; i++)
-            {
-            
-               {
-                  if(turnNum0 != 8)
-                  {        
-                     turnNum0++;
-                  }
-               
-                  if(manaCrystal0 != 8)
-                  { 
-                     manaCrystal0++;
-                  }
-               }          
-            }
-         
-            
-            
-         
-            System.out.println("player's turn " + playerNum);
-            System.out.println("turn number " +  turnNum0);
-            System.out.println("mana crystals " +  manaCrystal0);
-         
-         
-         
-            System.out.println("choose an option from the menu");
-            System.out.println("1: play a card");
-            System.out.println("2: show target stats");
-            System.out.println("3: goto battle phase");
-            System.out.println("8: end turn");
-            input2 = (byte) (input.nextInt());
-            playerNum = 1;
-            count++;
-         
-         }
-      
-         if (playerNum == 1) {
-         
-         
-            System.out.println("player's turn " + playerNum);
-            System.out.println("turn number " +  turnNum0);
-            System.out.println("mana crystals " +  manaCrystal0);
-             
-         }
-         
-         System.out.println("choose an option from the menu");
-         System.out.println("1: play a card");
-         System.out.println("2: show target stats");
-         System.out.println("3: goto battle phase");
-         System.out.println("8: end turn");
-         playerNum = 0;
-         
-            
-         byte input3 = (byte) (input.nextInt());
-         
-         while (input3 < 7 && input3 > 0) {
-            if (input3 == 1) {
-               playCard((byte) 1, hand1);
-            }
-            if (input3 == 2) {
-               
-               showTargetStats((byte) 1, hand1);
-               
-            }
-            if (input3 == 3) {
-               
-               battlePhase();
-               
-            }
-            if (input3 == 4) {
-                              	
-            }
-            	
-            for(int i = 0; i <= count; i++)
-            {
-            
-               {
-                  if(turnNum0 != 8)
-                  {        
-                     turnNum0++;
-                  }
-               
-                  if(manaCrystal0 != 8)
-                  { 
-                     manaCrystal0++;
-                  }
-               }          
-            }
-         
-               
-               
-            System.out.println("player's turn " + playerNum);					
-            System.out.println("turn number " +  turnNum0);
-            System.out.println("mana crystals " +  manaCrystal0);
-         
-            
-            
-            System.out.println("choose an option from the menu");
-            System.out.println("1: play a card");
-            System.out.println("2: show target stats");
-            System.out.println("3: goto battle phase");
-            System.out.println("8: end turn");
-            input2 = (byte) (input.nextInt());
-            playerNum = 0;
-            count++;
-         
-                         
-            
-         }
       }
    
+      System.out.println("choose an option from the menu");
+      System.out.println("1: play a card");
+      System.out.println("2: show target stats");
+      System.out.println("3: goto battle phase");
+      System.out.println("4: show cards in the deck");
+   
+   
+      System.out.println("8: end turn");
+   
+      byte input2 = (byte) (input.nextInt());
+   
+      while (input2 <= 8 && input2 > 0) {
+         if (input2 == 1) {
+            if (playerNum == 0 && manaCrystal0 > 0)
+               playCard(playerNum, hand0);
+            
+            else if (playerNum == 1 && manaCrystal1 > 0)
+               playCard(playerNum, hand1);
+         
+         } 
+         else if (input2 == 2) {
+            if (playerNum == 0)
+               showTargetStats(playerNum, hand0);
+            else
+               showTargetStats(playerNum, hand1);
+         } 
+         else if (input2 == 3) {
+            
+            
+            battlePhase();
+            
+         } 
+         else if (input2 == 4) {
+         
+         
+            if(playerNum == 0)
+            {
+            
+            
+             //battlecrys 1 - 10
+            
+                        
+               
+               for (int r = 0; r < deck0.size(); r++) 
+               {
+                  
+                  System.out.println();
+               
+                  Card temp = deck0.get(r);
+                  System.out.println(temp.getName());
+                  System.out.println("which players card " + temp.getPlayer());
+                  System.out.println("card's manacost " + temp.getManacost());
+                  System.out.println("card's attack " + temp.getHealth());
+                  System.out.println("card's health " + temp.getAtk());
+                  String[] s ={ "does nothing", "deal damage", "heal", "draw a card", "exile a target card", "destroy a target card", "charge", "gain 1+/1+"};
+                  System.out.println( "this card's battlecry is to " + s[temp.getBattlecry()]);                   
+               
+               
+               
+                  System.out.println();
+               
+               }
+                  
+            }
+               
+               
+               
+            
+            else
+            {
+               for (int r = 0; r < deck1.size(); r++) 
+               {
+                  
+                  Card temp = deck1.get(r);
+                  System.out.println(temp.getName());
+                  System.out.println("which players card " + temp.getPlayer());
+                  System.out.println("card's manacost " + temp.getManacost());
+                  System.out.println("card's attack " + temp.getHealth());
+                  System.out.println("card's health " + temp.getAtk());    
+                  String[] s ={ "does nothing", "deal damage", "heal", "draw a card", "exile a target card", "destroy a target card", "charge", "gain 1+/1+"};
+                  System.out.println( "this card's battlecry is to " + s[temp.getBattlecry()]); 
+                  
+               //1: deal damage
+               //2: heal 
+               //3: draw a card
+               //4: exile a target card
+               //5: destroy a target card
+               //6: charge
+               //7: gain 1+/1+
+               
+                  System.out.println();
+               
+               
+               
+                  
+               }
+            }
+            
+         }
+         
+         else if (input2 == 8) {
+            if (playerNum == 0) {
+               if (turnNum0 != 8) {
+                  turnNum0++;
+               }
+               if (manaCrystal0 != 8) {
+                  manaCrystal0++;
+               }
+            
+               manaCrystal0 = turnNum0;
+            
+            } 
+            else {
+               if (turnNum1 != 8) {
+                  turnNum1++;
+               }
+               if (manaCrystal1 != 8) {
+                  manaCrystal1++;
+               
+                  manaCrystal1 = turnNum1;
+               
+               }
+            }
+            if (playerNum == 0) {
+               System.out.println("turn number " + turnNum0);
+               System.out.println("mana crystals " + manaCrystal0);
+            } 
+            else {
+               System.out.println("turn number " + turnNum1);
+               System.out.println("mana crystals " + manaCrystal1);
+                                 
+               
+                                 
+               
+            }
+         
+            return;
+         }
+      
+         System.out.println("player's turn " + playerNum);
+         if (playerNum == 0) {
+            System.out.println("turn number " + turnNum0);
+            System.out.println("mana crystals " + manaCrystal0);
+         } 
+         else {
+            System.out.println("turn number " + turnNum1);
+            System.out.println("mana crystals " + manaCrystal1);
+         }
+      
+         System.out.println("choose an option from the menu");
+         System.out.println("1: play a card");
+         System.out.println("2: show target stats");
+         System.out.println("3: goto battle phase");
+         System.out.println("4: show cards in the deck");
+         System.out.println("8: end turn");
+      
+         input2 = (byte) (input.nextInt());
+      }
    }
 
    public static void battlePhase() {
    
-      sm.add(3, 2, new Commander((byte) 1));
    
       showToScreen();
+   
+         
+    
+   
+   
    
       System.out.println("you want to attack with ");
       System.out.println("x coord");
@@ -286,32 +316,127 @@ public class WTG
       System.out.println("y coord");
       byte yCoord2 = (byte) (input.nextInt());
    
+      if(sm.get(xCoord2,yCoord2) != null && sm.get(xCoord2,yCoord2).getTurnPlayed() == 1 )
+      {
+      
+      System.out.println("the card is either not there or summoning sick");
+      
+      
+      
+         return;
+      }
+   
+      
+   
+   
       dealBattleDamage(xCoord2, yCoord2);
    
    }
+   
+   
+   /*
+   
+   public static void move(byte xCoord, byte yCoord,byte playerNum)
+   {
+      
+     
+      {
+         
+         showToScreen();
+      
+         System.out.println("choose where to move to on the board, must be 1 space away from an adjacent piece");
+      
+      
+      }
+      System.out.println();
+      
+      System.out.println("x coord");
+      byte xCoord2 = (byte) (input.nextInt());
+      System.out.println("y coord");
+      byte yCoord2 = (byte) (input.nextInt());
+   
+      
+      
+      String state2 = validInputToMove(xCoord2, yCoord2, xCoord, yCoord);
+   
+      while (!state.equals("ok")) {
+      
+         showToScreen();
+         System.out.println(state2);
+         System.out.println("choose where you want to move, or enter -1 to leave ");
+         System.out.println("x coord");
+         xCoord2 = (byte) (input.nextInt());
+         System.out.println("y coord");
+         yCoord2 = (byte) (input.nextInt());
+         //defender = sm.get(xCoord2, yCoord2);
+         state2 = validInputToAttack(xCoord2, yCoord2, xCoord, yCoord);
+         
+         if(xCoord2 == -1 || yCoord2 == -1)
+            return;
+      }
+    
+                  
+         
+         
+         
+         
+                     
+     
+      
+      
+      Card card = hand.get(value2);
+      hand.remove(card);
+      
+      sm.add(xCoord, yCoord, card);
+      {
+         
+         canAttack = false;
+         
+      }
+         
+         
+      
+      
+      return;
+      
+      
+   
+   
+   }
+   
+   */
+   
+   
 
    public static void showTargetStats(byte playerNum, ArrayList<Card> hand) {
       System.out.println("hand or field");
-      String value3 = (input.nextLine());
+      String value3 = (input.next());
       if (value3.equals("")) {
-         value3 = (input.nextLine());
+         value3 = (input.next());
       }
       if (value3.equals("hand")) {
-         if (playerNum == 0) {
-            for (int r = 0; r < hand.size(); r++) {
+         for (int r = 0; r < hand.size(); r++) {
             
-               {
-                  Card temp = hand.get(r);
-                  System.out.print(hand.get(r) + " ");
-                  System.out.print(r + " ");
-                  System.out.println("card's health " + temp.getAtk());
-                  System.out.println("card's attack " + temp.getHealth());
+            {
+               Card temp = hand.get(r);
+                  
+                  
+               System.out.println(temp.getName());
+               System.out.println("which players card " + temp.getPlayer());
+               System.out.println("card's manacost " + temp.getManacost());
+               System.out.println("card's attack " + temp.getHealth());
+               System.out.println("card's health " + temp.getAtk());
                
-               }
             }
-         } 
-         else {
+         }
+      } 
+                     
          
+         
+         
+         
+         
+         /*
             System.out.println("choose the card you want to examine ");
             byte value2 = (byte) (input.nextInt());
          
@@ -329,7 +454,6 @@ public class WTG
                   {
                      System.out.println(hand.get(r).getName() + " ");
                      System.out.print("hand loc " + r);
-                  
                   
                      System.out.println(" mc " + hand.get(r).getManacost() + " ");
                   }
@@ -352,9 +476,12 @@ public class WTG
             System.out.print(" " + temp.getPlayer());
             System.out.println("card's health " + temp.getAtk());
             System.out.println("card's attack " + temp.getHealth());
+         */
          
-         }
-      } 
+         
+         
+         
+      
       else {
       
          showStats();
@@ -362,89 +489,73 @@ public class WTG
       }
    
       System.out.println();
+   
+      return;
    }
 
    public static void playCard(byte playerNum, ArrayList<Card> hand) {
    
-   
-   
       System.out.println("player num " + playerNum);
-      if(playerNum == 0)
-      {
-         System.out.println("avalible  mana crystals " +  manaCrystal0);
-            
-      }    
-            
-      else
-      {
-            
-         System.out.println("avalible  mana crystals " +  manaCrystal1);
+      if (playerNum == 0) {
+         System.out.println("avalible  mana crystals " + manaCrystal0);
       
-            
-      }      
+      }
+      
+      else {
+      
+         System.out.println("avalible  mana crystals " + manaCrystal1);
+      
+      }
    
-      
-      
+      int r = 0;
+   
       System.out.println("number card in hand");
    
       showToScreen();
    
-      for (int r = 0; r < hand.size(); r++) {
+      for (r = 0; r < hand.size(); r++) {
       
          {
             System.out.println(hand.get(r).getName() + " ");
             System.out.print("hand loc " + r);
-            
-          
+         
             System.out.println(" mc " + hand.get(r).getManacost() + " ");
          
          }
       
       }
-   
       System.out.println();
-      if (hand.size() != 0 && ( (playerNum == 0 && manaCrystal0 != 0) ||  (playerNum == 1 && manaCrystal1 != 0) )) 
+   
+      System.out.println("choose the card you want to play ");
+      byte value2 = (byte) (input.nextInt());
+      System.out.println("x coord");
+      byte xCoord = (byte) (input.nextInt());
+      System.out.println("y coord");
+      byte yCoord = (byte) (input.nextInt());
+   
+      if (hand.size() != 0 && ((playerNum == 0 && manaCrystal0 - hand.get(value2).getManacost() >= 0)
+      		|| (playerNum == 1 && manaCrystal1 - hand.get(value2).getManacost() >= 0))) {
       
-      {
-      
-         System.out.println("choose the card you want to play ");
-         byte value2 = (byte) (input.nextInt());
-         System.out.println("x coord");
-         byte xCoord = (byte) (input.nextInt());
-         System.out.println("y coord");
-         byte yCoord = (byte) (input.nextInt());
-         
-                 
-                
-                 
          while (validInputToPlay(xCoord, yCoord, value2, hand, playerNum) == false) {
             System.out.println("the selected input is bad, or you dont have enough mana crystals to play that");
             System.out.println("player num " + playerNum);
-                       
-            if(playerNum == 0)
-            {
-               System.out.println("avalible  mana crystals " +  manaCrystal0);
-            
-            }    
-            
-            else
-            {
-            
-               System.out.println("avalible  mana crystals " +  manaCrystal1);
-            
-            
-            }      
-                       
          
+            if (playerNum == 0) {
+               System.out.println("avalible  mana crystals " + manaCrystal0);
             
+            }
             
+            else {
+            
+               System.out.println("avalible  mana crystals " + manaCrystal1);
+            
+            }
          
-            for (int r = 0; r < hand.size(); r++) {
+            for (r = 0; r < hand.size(); r++) {
             
                {
                   System.out.println(hand.get(r).getName() + " ");
                   System.out.print("hand loc " + r);
-               
                
                   System.out.println(" mc " + hand.get(r).getManacost() + " ");
                
@@ -467,6 +578,10 @@ public class WTG
          hand.remove(card);
       
          sm.add(xCoord, yCoord, card);
+         
+         
+        
+         
          if (card.getBattlecry() == 1) {
          
             System.out.println("what is the location of the card you want to deal battle damage to");
@@ -484,42 +599,27 @@ public class WTG
          System.out.println("(" + xCoord + "," + yCoord + ")");
          showToScreen();
       
+         removeMana(playerNum, (byte) card.getManacost());
       
-         removeMana(playerNum, (byte)card.getManacost());
-      
-               
-         
-      
-      
-      
+         return;
       
       }
-         
-                
    
    }
 
-   public static byte removeMana(byte playerNum ,byte manaCost)
-   {
+   public static byte removeMana(byte playerNum, byte manaCost) {
    
-      if (playerNum == 0) 
+      if (playerNum == 0)
       
-      
-         manaCrystal0 =- manaCost;
-      
-      
+         manaCrystal0 -= manaCost;
       
       else
       
-      
-         manaCrystal1 =- manaCost;
-   
-   
+         manaCrystal1 -= manaCost;
    
       return manaCost;
    
    }
-
 
    public static byte playCardFromDiscard(byte playerNum, ArrayList<Card> discard) {
    
@@ -530,10 +630,8 @@ public class WTG
          {
             System.out.println(discard.get(r).getName() + " ");
             System.out.print("hand loc " + r);
-            
-          
-            System.out.println(" mc " + discard.get(r).getManacost() + " ");
          
+            System.out.println(" mc " + discard.get(r).getManacost() + " ");
          
          }
       
@@ -586,10 +684,12 @@ public class WTG
          for (int c = 0; c < sm.numColumns(); c++) {
             Card temp = sm.get(r, c);
             if (temp != null) {
-               System.out.println(temp);
+               System.out.println(temp.getName());
                System.out.println("which players card " + temp.getPlayer());
-               System.out.println("card's health " + temp.getAtk());
+               System.out.println("card's manacost " + temp.getManacost());
                System.out.println("card's attack " + temp.getHealth());
+               System.out.println("card's health " + temp.getAtk());
+            
             }
          }
       }
@@ -603,8 +703,7 @@ public class WTG
          {
             System.out.println(discard.get(r).getName() + " ");
             System.out.print("discard loc " + r);
-            
-          
+         
             System.out.println(" mc " + discard.get(r).getManacost() + " ");
          }
       
@@ -646,8 +745,7 @@ public class WTG
          {
             System.out.println(hand.get(r).getName() + " ");
             System.out.print("hand loc " + r);
-            
-          
+         
             System.out.println(" mc " + hand.get(r).getManacost() + " ");
          
          }
@@ -664,71 +762,61 @@ public class WTG
       return playerNum;
    }
 
+   public static void dealDamage()
+   {
+   
+   
+   
+   }
+
+
    public static void dealBattleDamage(byte xCoord, byte yCoord) {
    
       Card attacker = sm.get(xCoord, yCoord);
       if (attacker == null) {
-         System.out.println("no attacker");
+         System.out.println("no attacker, or enter -1 to exit");
          return;
       
       }
       System.out.println("these are all the cards on the field");
-      System.out.println("players cards on the field are signified by the number 0 for p1, 1 for p2");
-   
-      for (int r = 0; r < sm.numRows(); r++) {
-         for (int c = 0; c < sm.numColumns(); c++) {
-            Card temp = sm.get(r, c);
-            if (temp != null) {
-            
-               System.out.print(temp);
-               System.out.print(" " + temp.getPlayer());
-            
-            }
-         }
-      
-      }
+           
+      showToScreen();
+           
+           
       System.out.println();
    
-      sm.add(2, 2, new Commander((byte) 1));
    
-      System.out.println("choose the card you want to deal damage to..as an x and y coord ");
+      System.out.println("choose the card you want to deal damage to..as an x and y coord or enter -1 to leave ");
       System.out.println("x coord");
       byte xCoord2 = (byte) (input.nextInt());
       System.out.println("y coord");
       byte yCoord2 = (byte) (input.nextInt());
+      if(xCoord == -1 || yCoord == -1)
+         return;
    
-      Card defender = sm.get(xCoord2, yCoord2);
-      while (defender == null) {
-         System.out.println("no defender");
-         System.out.println("choose the card you want to deal damage to..as an x and y coord ");
-         System.out.println("x coord");
-         xCoord2 = (byte) (input.nextInt());
-         System.out.println("y coord");
-         yCoord2 = (byte) (input.nextInt());
-         defender = sm.get(xCoord2, yCoord2);
-      
-      }
-   
+      //
       String state = validInputToAttack(xCoord2, yCoord2, xCoord, yCoord);
    
       while (!state.equals("ok")) {
-         if (xCoord == xCoord2 && yCoord == yCoord2) {
-         
-            System.out.println("same position of card");
-         
-         }
-         System.out.println(state);
-         showToScreen();
       
-         System.out.println("choose the card you want to deal damage to..as an x and y coord ");
+         showToScreen();
+         System.out.println(state);
+         System.out.println("choose the card you want to deal damage to..as an x and y coord or enter -1 to leave ");
          System.out.println("x coord");
          xCoord2 = (byte) (input.nextInt());
          System.out.println("y coord");
          yCoord2 = (byte) (input.nextInt());
+         //defender = sm.get(xCoord2, yCoord2);
          state = validInputToAttack(xCoord2, yCoord2, xCoord, yCoord);
-      
+         
+         if(xCoord2 == -1 || yCoord2 == -1)
+            return;
       }
    
+      Card defender = sm.get(xCoord2, yCoord2);
+      System.out.println(state);
+      showToScreen();
+      /*
       for (int r = 0; r < sm.numRows(); r++) {
          for (int c = 0; c < sm.numColumns(); c++) {
             Card temp = sm.get(r, c);
@@ -739,45 +827,56 @@ public class WTG
             
             }
          }
+      }
+      */
+      byte atkAtk = attacker.getAtk();
+      byte atkHp = attacker.getHealth();
       
-         byte atkAtk = attacker.getAtk();
-         byte atkHp = attacker.getHealth();
-      
-         byte defAtk = attacker.getAtk();
-         byte defHp = attacker.getHealth();
+      byte defAtk = defender.getAtk();
+      byte defHp = defender.getHealth();
       
       	// the cards aren't dead
       
-         if (atkHp != 0 && defHp != 0) {
+      if (atkHp != 0 && defHp != 0) {
          
          	// atker: 2/5 defender: 2/7
          	// takes away the health equal to the atk of each card, then if
          	// it killed the card
          	// print the name of the card and remove it from the board
-            if (atkAtk > defHp) {
-               defender.setHealth((byte) ((byte) defHp - (byte) atkAtk));
-               attacker.setHealth((byte) ((byte) atkHp - (byte) defAtk));
-               if (defHp == 0) {
+         if (atkAtk > defHp) {
+            defender.setHealth((byte) ((byte) defHp - (byte) atkAtk));
+            attacker.setHealth((byte) ((byte) atkHp - (byte) defAtk));
+            if (defHp == 0) {
                
-                  System.out.println("health of attacker" + atkHp + attacker.getPlayer() + "health of defender"
-                     	+ defHp + defender.getPlayer());
+               System.out.println("health of attacker" + atkHp + " " + attacker.getPlayer() + "health of defender"
+                     	+ defHp + " " + defender.getPlayer());
                
-               }
-            
             }
+            
+         }
          
          	// atker: 3/2 def: 2/3
          	// if both cards have reverse stats they will both destroy the
          	// opposing cards and remove them from the field
          
-            if (atkAtk == defHp)
-               attacker.setHealth((byte) 0);
-            defender.setHealth((byte) 0);
+         if (atkAtk == defHp)
+            attacker.setHealth((byte) 0);
+         defender.setHealth((byte) 0);
          
-         }
-      
       }
-      System.out.println("the defending card's attack and health" + defender.getAtk() + " " + defender.getHealth());
+      
+      
+      System.out.println("the defending card's attack " + defender.getAtk() + " and health " + defender.getHealth());
+      
+      if (attacker.getHealth() == 0)
+         
+         sm.remove(xCoord, yCoord);
+      
+     
+   
+      if (defender.getHealth() == 0)
+      
+         sm.remove(xCoord2, yCoord2);
    
    }
 
@@ -803,35 +902,28 @@ public class WTG
          return false;
       
       }
+   
+      if (playerNum == 0) {
       
-      if(playerNum == 0)
-      {
+      	// System.out.println("\t \t" + hand.get(cardNum).getManacost() + "
+      	// " + manaCrystal0);
       
-      
-      
-      //  System.out.println("\t \t" + hand.get(cardNum).getManacost() + "  " + manaCrystal0);
-      
-         if(hand.get(cardNum).getManacost() > manaCrystal0)
-         {
+         if (hand.get(cardNum).getManacost() > manaCrystal0) {
          
             return false;
          
          }
-         
-      }
-         
-      else
-      { 
-         if(hand.get(cardNum).getManacost() > manaCrystal1)
-         {
-            
-            return false;
-            
-            
-         }
+      
       }
       
+      else {
+         if (hand.get(cardNum).getManacost() > manaCrystal1) {
          
+            return false;
+         
+         }
+      }
+   
       for (int row = r - 1; row <= r + 1; row++)
          for (int col = c - 1; col <= c + 1; col++) {
             if (row == r && col == c)
@@ -858,7 +950,7 @@ public class WTG
       }
       if (vr == ar && vc == ac) {
       
-         return "cannot attack each other ";
+         return "cannot attack ally ";
       
       }
    
@@ -883,5 +975,49 @@ public class WTG
       return "not adjacent";
    
    }
+
+   /*
+
+   public static String validInputToMove(byte mr, byte mc, byte cr, byte cc) {
+      if (mr < 0 || cr >= sm.numRows() || mc < 0 || cc >= sm.numColumns()) {
+      
+         return "victim bad coordinates";
+      
+      }
+      if (mr < 0 || ar >= sm.numRows() || ac < 0 || ac >= sm.numColumns()) {
+      
+         return "attacker bad coordinates";
+      
+      }
+      if (vr == ar && vc == ac) {
+      
+         return "cannot attack ally ";
+      
+      }
+   
+      Card attacker = sm.get(ar, ac);
+      Card victim = sm.get(vr, vc);
+      if (attacker == null || victim == null) {
+      
+         return "no one to attack";
+      
+      }
+   
+      if (attacker.getPlayer() == victim.getPlayer()) {
+      
+         return "cannot attack own cards ";
+      
+      }
+      byte dr = (byte) Math.abs(vr - ar);
+      byte dc = (byte) Math.abs(vc - ac);
+   
+      if (dr <= 1 && dc <= 1)
+         return "ok";
+      return "not adjacent";
+   
+   }
+
+*/
+
 
 }
