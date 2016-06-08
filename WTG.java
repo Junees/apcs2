@@ -26,6 +26,34 @@ public class WTG
    public static int manaCrystal0 = 1;
    public static int manaCrystal1 = 1;
 
+
+//things i still have to do
+//finish moving
+//finish taunt
+//finish commenting
+//restrict cards to attack and move once per turn
+//add some battlecry effects into the game
+//list of cards most likely just the word document but edited
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//runs the game see the word document for rules
+
+
    public static void main(String[] vidyagame) throws IOException {
    
    	// drawCardFromDiscard(byte playerNum, ArrayList<Card> discard)
@@ -66,6 +94,12 @@ public class WTG
       Card c0 = findCommander((byte) 0);
       Card c1 = findCommander((byte) 1);
    
+      System.out.println("Welcome to Winterend");
+   
+   
+   
+   
+   
       while (c0.getHealth() > 0 && c1.getHealth() > 0) {
       
          standbyPhase();
@@ -88,6 +122,10 @@ public class WTG
 
    public static Scanner input = new Scanner(System.in);
 
+
+   //pre: wants the player's number
+   //post: returns the location of the entered player's commander and makes sure it's not dead
+
    public static Card findCommander(byte playerNum) {
       for (int r = 0; r < sm.numRows(); r++) {
          for (int c = 0; c < sm.numColumns(); c++) {
@@ -98,6 +136,9 @@ public class WTG
       }
       return null;
    }
+   
+   //pre: nothing just runs the most basic commands the game needs
+   //post: makes sure the commander is alive 
 
    public static void standbyPhase() {
    
@@ -107,13 +148,15 @@ public class WTG
       System.out.println("health of commander " + c0.getHealth());
       System.out.println("health of commander " + c1.getHealth());
    
-      showToScreen();
       showStats();
    
       System.out.println("");
    
    }
 
+
+   //pre: requires the player Number, runs the turn for each player 
+   //post: the main method for the game, runs all the rules etc.
    public static void mainPhase(byte playerNum)
    
    {
@@ -300,6 +343,10 @@ public class WTG
       }
    }
 
+
+//pre: requires nothing
+//post: conducts battle between two cards, the location you are sending it within dealBattleDamage and checks if it has summoning sickness
+
    public static void battlePhase() {
    
    
@@ -333,6 +380,8 @@ public class WTG
    
    }
    
+   //pre: needs the coords for the card you are trying to move and the playerNum for that card
+   //post: moves the card to the targeted location and prints the new location
    
    /*
    
@@ -407,6 +456,8 @@ public class WTG
    */
    
    
+//pre: requires the player's number and the hand you are trying to look through
+//post: shows the stats of all the cards in either the field or that player's hand
 
    public static void showTargetStats(byte playerNum, ArrayList<Card> hand) {
       System.out.println("hand or field");
@@ -492,6 +543,9 @@ public class WTG
    
       return;
    }
+
+//pre: needs the player's number and the hand you are trying to play from
+//post: removes the card from that player's hand, adds it to the field and checks for battlecry effects
 
    public static void playCard(byte playerNum, ArrayList<Card> hand) {
    
@@ -607,6 +661,9 @@ public class WTG
    
    }
 
+   //pre: needs the playerNum and the mana cost of the card
+   //post: removes the cost of the card from the player's mana
+
    public static byte removeMana(byte playerNum, byte manaCost) {
    
       if (playerNum == 0)
@@ -620,6 +677,9 @@ public class WTG
       return manaCost;
    
    }
+
+   //pre/post: same thing as play card but from the discard
+
 
    public static byte playCardFromDiscard(byte playerNum, ArrayList<Card> discard) {
    
@@ -678,6 +738,8 @@ public class WTG
       return playerNum;
    }
 
+   //pre:/post: shows the stats of all the cards on the field
+
    public static void showStats() {
    
       for (int r = 0; r < sm.numRows(); r++) {
@@ -694,6 +756,9 @@ public class WTG
          }
       }
    }
+
+
+//pre:/post: same thing as draw card but from the discard pile
 
    public static byte drawCardFromDiscard(byte playerNum, ArrayList<Card> discard) {
       System.out.println("number card in discardPile");
@@ -718,6 +783,9 @@ public class WTG
    
       return playerNum;
    }
+      
+     //pre: needs the player num to know which deck to draw from
+     //post: removes the card from that player's deck and adds it to thier hand 
 
    public static byte drawCard(byte pNum) {
    
@@ -736,6 +804,10 @@ public class WTG
       return 0;
    
    }
+
+   //pre: needs the playerNum, the hand to discard from and the discard pile to add to
+   //post: the card from that player's hand, is discarded there
+
 
    public static byte discard(byte playerNum, ArrayList<Card> hand, ArrayList<Card> discard) {
       System.out.println("cards in your hand");
@@ -762,12 +834,19 @@ public class WTG
       return playerNum;
    }
 
+
+//pre: needs x and y coord for the card
+//post: subtracts the health from the card and removes it from the board. Similar to dealing battle damage but this is related to spells and battlecry effects i.e. Deal 3 Damage
+
    public static void dealDamage()
    {
    
    
    
    }
+
+//pre: needs the x and y coord for the card you are attacking with
+//post: deals damage to a card, checks if it is dead, if so removes it from the board, (maybe) and checks for deathrattles
 
 
    public static void dealBattleDamage(byte xCoord, byte yCoord) {
@@ -880,11 +959,18 @@ public class WTG
    
    }
 
+//shows all the cards
+
+
    public static void showToScreen() {
    
       System.out.println(sm.toString());
    
    }
+
+
+//pre: needs the x and y for where you are trying to play the card, the card number from the hand, and the player's Number
+//post: checks if everything is valid, and if so allows the player to play thier card 
 
    public static boolean validInputToPlay(byte r, byte c, byte cardNum, ArrayList<Card> hand, byte playerNum) {
       if (r < 0 || r >= sm.numRows() || c < 0 || c >= sm.numColumns()) {
@@ -937,6 +1023,9 @@ public class WTG
    
    }
 
+
+//pre: needs the x and y for the attacker, and the x and y for the defending card
+//post: checks if everything is valid, and if so allows the player to attack the other card
    public static String validInputToAttack(byte vr, byte vc, byte ar, byte ac) {
       if (vr < 0 || vr >= sm.numRows() || vc < 0 || vc >= sm.numColumns()) {
       
@@ -977,6 +1066,11 @@ public class WTG
    }
 
    /*
+
+
+//pre: needs the x and y for the location it is in now, and the x and y for the new card's location 
+//post: checks if everything is valid, and if so allows the player to move
+
 
    public static String validInputToMove(byte mr, byte mc, byte cr, byte cc) {
       if (mr < 0 || cr >= sm.numRows() || mc < 0 || cc >= sm.numColumns()) {

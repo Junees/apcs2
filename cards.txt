@@ -1,6 +1,6 @@
-Deadly Imp,1,2,1,0,0,0,0,0,0,0,9,1
-Icefist Raptor,2,3,2,0,0,0,0,0,0,0,9,1
-Heavenly Gorgon,3,3,4,2,0,0,0,0,0,0,2,1
+Deadly Imp,1,1,2,0,0,0,0,0,0,0,9,1
+Icefist Raptor,2,2,3,0,0,0,0,0,0,0,9,1
+Heavenly Gorgon,3,4,3,2,0,0,0,0,0,0,2,1
 Diseased Imp,2,2,3,0,0,0,0,0,0,0,9,1
 Helpless General,2,2,2,0,0,0,0,0,0,0,9,1
 Diseased Villager,2,1,1,0,0,0,0,0,0,0,9,1

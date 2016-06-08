@@ -1,0 +1,53 @@
+Winterend: like duelyst... but not bad
+
+By: Wills Davis
+
+Special thanks to. RevO, Rhys Miller, Kelvin Peng, Sam Scheele, Jacob Wood and Nick Hodgeman  
+
+A mix between Hearthstone, Magic the Gathering and Nobunaga's Ambition
+
+https://www.wikiwand.com/en/Hearthstone:_Heroes_of_Warcraft
+https://www.wikiwand.com/en/Magic:_The_Gathering
+https://www.wikiwand.com/en/Nobunaga%27s_Ambition
+
+
+Skip to section 3, for the basic rules
+
+Section 1: Inspiration and Idea process
+
+
+The original idea for the project was to take the game duelsyt and make it not bad.
+
+The major flaws in Duelyst:
+
+up to 3 copies of each card in your deck
+
+1. up to 3 legendaries in every deck and they extremely unbalanced
+(hearthstone had some balance by allowing one copy of a powerful card)
+//every other card game has some sort of restriction, Magic has legendary creatures that are restricted to one, the Yugioh banlist, Pokemon has specific banned cards and rotations to make sure the game is specifically balanced
+
+2. Some classes were extremely over powered, namely Songhai 
+
+etc.
+
+Kaido Assassin, Common, 2 mana, 2 Attack, 3 Health, backstab 1 
+
+(which gains +1 attack if it is behind another minion, which is very easy to do essentially making it a 2 mana 3/3)
+
+Tusk Boar, Legendary (with no restriction) 2 mana, 2 Attack, 3 Health, Charge (has no summoning sickness), goes back into your hand at the end of the turn 
+
+(trades with any early minion and goes back to your hand, and is guarenteed 2 face damage every turn)
+
+Storm Kage, Legendary, 7 mana, 5 attack, 10 Health, whenever your spells deal damage, add a copy of this card to your hand
+
+(cards with lots of health are hard to remove, limited removal spells and it takes lots of minions to trade up)
+
+Juxtaposition, Epic Spell, 0 mana, Switch the position of any two minions on the board
+
+0 mana spells are inherently broken, and minions being exchanged for backstab damage, moving away ranged minions and saving low health minions. the ammount of tempo that is gained from this card is insane
+
+
+Reasons why these cards are bad design, 
+
+
+

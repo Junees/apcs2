@@ -32,9 +32,9 @@ public class Card {
      
       NAME = N;
     
-      Stats[MANACOST] = M;
-      Stats[ATK] = A;
-      Stats[HEALTH] = H;
+      Stats[MANACOST] = M; //how much mana it costs to play
+      Stats[ATK] = A;   // the card's attack 
+      Stats[HEALTH] = H; // the card's health
       Stats[BATTLECRY] = B; //enters the field
       Stats[DEATHRATTLE] = D; //leaves the field
       Stats[STARTOFTURN] = S; // effects at the start of turn
@@ -93,13 +93,7 @@ public class Card {
  
  
  
- //change mana cost
- // changing attack + and -
- // changing health + and -
- // battlecry, damaging and other effects from cards
- //start of turn effects will trigger battlecry effects not the actual effect but calling the method to increase attack
- //give taunt / remove taunt 
- //program taunt
+ 
  
  /*
  
@@ -154,6 +148,8 @@ public class Card {
  
  }
 */
+
+//these methods return and set their corresponding values
 
    public String getName() {
    
